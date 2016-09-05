@@ -1,0 +1,22 @@
+version: "2"
+services:
+    pochtalion:
+        build:
+            context: .
+            dockerfile: Dockerfile
+#            args:
+#                API_PRIVATE_TOKEN: ...
+        command: --addr :80 --uname dev --upwd dev
+        environment:
+            MAILGUN_DOMAIN: sender.domain.com
+            MAILGUN_APIKEY: key-....
+            MAILGUN_APIPKEY: 
+        container_name: pochtalion
+        labels:
+            - "traefik.backend=pochtalion"
+            - "traefik.port=80"
+            - "traefik.frontend.rule=Host:your.domain.com"
+# networks:
+#   default:
+#     external:
+#       name: internal_network

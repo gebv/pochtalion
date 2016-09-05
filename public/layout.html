@@ -1,0 +1,40 @@
+{{define "head"}}
+<html lang="ru-ru" class="uk-notouch">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pochtalion.</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.27.1/css/uikit.almost-flat.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.27.1/js/uikit.min.js"></script>
+</head>
+<body>
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+    <nav class="uk-navbar uk-margin-large-bottom">
+        <a class="uk-navbar-brand uk-hidden-small" href="/">/</a>
+        <ul class="uk-navbar-nav uk-hidden-small">
+            <li class="uk-active">
+                <a href="/newmailing">Новая рассылка</a>
+            </li>
+        </ul>
+        <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas=""></a>
+        <div class="uk-navbar-brand uk-navbar-center uk-visible-small">Brand</div>
+    </nav>
+    <div class="uk-grid" data-uk-grid-margin="">
+{{end}}
+{{define "footer"}}
+    </div>
+    <hr class="uk-grid-divider">
+    <div>
+        <div class="uk-container uk-container-center uk-text-center">
+
+            <ul class="uk-subnav uk-subnav-line uk-flex-center">
+                <li><a href="/">/</a></li>
+                <a href="/newmailing">Новая рассылка</a>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+{{end}}

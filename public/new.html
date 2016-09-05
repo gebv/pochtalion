@@ -1,0 +1,85 @@
+{{define "sending"}}
+{{ template "head"}}
+<div class="uk-container uk-container-center">
+<h1>Рассылка запущена для {{.Length }} контактов.</h1>
+<a href="/newmailing">Перейти к новой рассылке</a>
+<hr>
+<form class="uk-form uk-form-horizontal uk-width-1-1" >
+     <div class="uk-form-row">
+        <label class="uk-form-label" for="form-title">Письма учавствующие в рассылке</label>
+        <div class="uk-form-controls">
+            <textarea class="uk-width-1-1" cols="30" rows="5">{{.EmailsRaw}}</textarea>
+        </div>
+    </div>
+
+</form>
+
+</div>
+{{ template "footer"}}
+{{end}}
+
+{{define "newmailing"}} {{ template "head"}}
+<div class="uk-container uk-container-center">
+{{ if .Error }}
+<div class="uk-alert uk-alert-danger">{{ .ErrorMsg }}</div>
+{{ end }}
+</div>
+
+<form 
+    class="uk-form uk-form-horizontal uk-width-1-1" 
+    action="/newmailing" 
+    method="POST"
+    enctype="multipart/form-data"
+    >
+
+    <div class="uk-form-row">
+        <label class="uk-form-label" for="form-title">Тема письма</label>
+        <div class="uk-form-controls">
+            <input name="title" type="text" id="form-title"
+            value="{{.Title}}" 
+            placeholder="Тема письма" 
+            class="uk-width-1-1"
+            autofocus
+            autocomplete="off">
+        </div>
+    </div>
+    <div class="uk-form-row">
+        <label class="uk-form-label" for="form-from">От кого</label>
+        <div class="uk-form-controls">
+            <input 
+                name="from" 
+                type="text" 
+                value="{{.From}}"
+                id="form-from" 
+                placeholder="От кого" 
+                class="uk-width-1-1"
+                autocomplete="off"
+                >
+        </div>
+    </div>
+    <div class="uk-form-row">
+        <label class="uk-form-label" for="form-emails">Emails (каждая почта с новой строки)</label>
+        <div class="uk-form-controls">
+            <textarea name="emails" id="form-emails" cols="30" rows="5" placeholder="email1@mail.com
+email2@mail.com
+email3@mail.com
+email4@mail.com
+..." class="uk-width-1-1" autocomplete="off">{{.RawEmails}}</textarea>
+        </div>
+    </div>
+
+    <div class="uk-form-row">
+        <label class="uk-form-label" for="form-body">Текст письма</label>
+        <div class="uk-form-controls">
+            <textarea name="body" id="form-body" cols="30" rows="5" placeholder="Hello, ..." class="uk-width-1-1" autocomplete="off">{{.RawText}}</textarea>
+        </div>
+    </div>
+
+    <div class="uk-form-row">
+        <div class="uk-form-controls">
+            <button class="uk-button">Отпарвить</button>
+        </div>
+    </div>
+</form>
+{{ template "footer"}}
+{{end}}
