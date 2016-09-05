@@ -31,6 +31,7 @@ func SetupRouting(e *echo.Echo) {
 	}
 
 	e.SetRenderer(t)
+	e.Get("/", NewMailing)
 	e.Get("/newmailing", NewMailing)
 	e.Post("/newmailing", CreateNewMailing)
 }
