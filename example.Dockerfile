@@ -4,7 +4,8 @@ COPY ./ /usr/local/src/pochtalion
 
 RUN go get -v github.com/labstack/echo/... \
     gopkg.in/asaskevich/govalidator.v4 \
-    gopkg.in/mailgun/mailgun-go.v1
+    gopkg.in/mailgun/mailgun-go.v1 \
+    github.com/inpime/sdata
 
 RUN cd /usr/local/src/pochtalion/ && \
     GOPATH=${PWD}:${GOPATH} \
