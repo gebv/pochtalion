@@ -9,6 +9,8 @@ import (
 	"net/http"
 	"strings"
 
+	"pochtalion"
+
 	"github.com/labstack/echo"
 	valid "gopkg.in/asaskevich/govalidator.v4"
 )
@@ -119,7 +121,7 @@ func CreateNewMailing(ctx echo.Context) error {
 		return ctx.Render(http.StatusBadRequest, "newmailing", form)
 	}
 
-	pochtalen.Sender.SendMailling(form.From, form.Title, form.RawText, form.Emails...)
+	pochtalion.Sender.SendMailling(form.From, form.Title, form.RawText, form.Emails...)
 
 	return ctx.Render(http.StatusBadRequest, "sending", map[string]interface{}{
 		"Length":    len(form.Emails),
