@@ -1,11 +1,11 @@
 FROM golang:1.7
 
-COPY ./ /usr/local/src/pochtalion
-
 RUN go get -v github.com/labstack/echo/... \
     gopkg.in/asaskevich/govalidator.v4 \
     gopkg.in/mailgun/mailgun-go.v1 \
     github.com/inpime/sdata
+
+COPY ./ /usr/local/src/pochtalion
 
 RUN cd /usr/local/src/pochtalion/ && \
     GOPATH=${PWD}:${GOPATH} \
